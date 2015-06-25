@@ -1,0 +1,2 @@
+export PROMPT_COMMAND='{ msg=$(history 1 | { read x y; echo $y; }); logger -p local5.info "$HOSTNAME [HIST] : $SSH_CLIENT : $PWD : $msg"; }'
+export HISTTIMEFORMAT="[%F %T]"

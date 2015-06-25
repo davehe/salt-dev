@@ -1,0 +1,5 @@
+while true
+do 
+echo "{"domain":"member","topic":"errorMessage function","level":2}" >>test
+sleep 20
+done

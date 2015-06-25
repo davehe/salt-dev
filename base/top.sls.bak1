@@ -1,0 +1,21 @@
+base:
+    '*':
+        - init          # the system init
+        - users         # add users three user one pubkey
+#        - java          # orcale jdk environment
+        - sudoer        # config sudoer
+        - yum           # repos config file
+        - hosts         # sync host and resolve 
+        - ssh           # ssh-client,ssh-server config
+        - ntpd          # service ntpd
+        - syslog        # log server config
+        - monitor       # zabbix,salt-minion config
+        - vim           # vim,vimconfig vimcolor 
+
+prod:
+    '*app*.a.pa.com':
+        - idc-shnh.tools
+#        - idc-shnh.lb
+        - idc-shnh.lapp
+        - idc-shnh.app
+        - idc-shnh.app.limit

@@ -1,0 +1,11 @@
+[local-source]
+name=localsource - $basearch
+baseurl=http://yum.a.pa.com/source/
+enabled=1
+gpgcheck=0
+
+[local-base]
+name=localbase - $basearch
+baseurl=http://yum.a.pa.com/base/
+enabled=1
+gpgcheck=0 

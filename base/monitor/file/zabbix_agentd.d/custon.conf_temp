@@ -1,0 +1,25 @@
+####check disk io
+UserParameter=io.scandisk[*],bash /etc/zabbix/custon_scripts/get_disk.sh $1
+UserParameter=dev.read.ops[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$4}'
+UserParameter=dev.read.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$7}'
+UserParameter=dev.write.ops[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$8}'
+UserParameter=dev.write.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$11}'
+UserParameter=dev.io.active[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$12}'
+UserParameter=dev.io.ms[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$13}'
+UserParameter=dev.read.sectors[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$6}'
+UserParameter=dev.write.sectors[*],cat /proc/diskstats | grep $1 | head -1 | awk '{print $$10}'
+####tcpport discover
+#UserParameter=tcpportlisten,bash /etc/zabbix/custon_scripts/discovertcpport.sh
+UserParameter=servicelisten,bash /etc/zabbix/custon_scripts/serviceport.sh
+
+###develepor 
+UserParameter=name_lc,bash /etc/zabbix/custon_scripts/log_consumer/logcheck.sh
+#discovery get name_list
+UserParameter=name,bash /etc/zabbix/custon_scripts/log_consumer/get_name.sh|sed ':a;N;$!ba;s/\(.*\),/\1/'|sed '2s/\t\t//'
+UserParameter=warn[*],bash /etc/zabbix/custon_scripts/log_consumer/get_info.sh  |grep $1|grep 1 |wc -l
+UserParameter=error[*],bash /etc/zabbix/custon_scripts/log_consumer/get_info.sh |grep $1|grep 2 |wc -l
+UserParameter=fatal[*],bash /etc/zabbix/custon_scripts/log_consumer/get_info.sh |grep $1|grep 3 |wc -l
+
+##业务监控##
+UserParameter=dumpcheck,ps -ef |grep [d]ump |wc -l
+

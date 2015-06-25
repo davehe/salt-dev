@@ -1,0 +1,13 @@
+restrict default nomodify notrap noquery
+fudge 127.127.1.0 stratum 2
+restrict 127.0.0.1
+restrict 10.10.100.0 mask 255.255.255.0
+restrict 10.10.105.0 mask 255.255.255.0
+restrict 10.10.108.0 mask 255.255.255.0
+server cn.pool.ntp.org
+server 0.pool.ntp.org
+server 1.pool.ntp.org
+disable monitor
+driftfile /var/lib/ntp/drift
+statsdir /var/log/ntp/
+logfile /var/log/ntp/ntp.log

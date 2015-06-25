@@ -1,0 +1,8 @@
+server 10.10.100.201
+fudge 127.127.1.0 stratum 2
+restrict 127.0.0.1
+driftfile /var/lib/ntp/drift
+#restrict default kod nomodify notrap nopeer noquery
+#restrict -6 default kod nomodify notrap nopeer noquery
+restrict 211.136.105.207 mask 255.255.255.255
+disable monitor
